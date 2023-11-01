@@ -16,23 +16,27 @@ but somehow I had not yet bumped into the [HEALTHCHECK statement for the Dockerf
 Example for Nginx, let's say you have some HTML content in a `content` directory,
 then you can write a Dockerfile like this:
 
-    FROM nginx
+```dockerfile
+FROM nginx
 
-    COPY content /usr/share/nginx/html
+COPY content /usr/share/nginx/html
 
-    HEALTHCHECK --interval=5s --timeout=3s \
-      CMD curl -f http://localhost/?healthcheck=1 || exit 1
+HEALTHCHECK --interval=5s --timeout=3s \
+  CMD curl -f http://localhost/?healthcheck=1 || exit 1
+```
 
 If you build that image and then start a container with it:
 
-    docker build . -t simple-nginx-docker  # Build the image
-    docker run --rm -p 8000:80 simple-nginx-docker  # Run a container
+```shell
+docker build . -t simple-nginx-docker  # Build the image
+docker run --rm -p 8000:80 simple-nginx-docker  # Run a container
+```
 
 Then, you'll see:
 
 1. the incoming health check requests arriving in the container logs as per the configuration, every 5 seconds:
 
-```
+```access_log
 127.0.0.1 - - [01/Nov/2023:18:42:49 +0000] "GET /?healthcheck=1 HTTP/1.1" 200 411 "-" "curl/7.88.1" "-"
 ```
 

@@ -9,12 +9,13 @@ enableRobotsTXT = true
 summaryLength= 15
 paginate = 5
 
+# See: https://gohugo.io/getting-started/configuration-markup/#highlight
 [markup.highlight]
-      codeFences = false
-      guessSyntax = false
-      hl_Lines = ""
-      lineNoStart = 1
-      lineNos = false
-      lineNumbersInTable = false
-      tabWidth = 4
-      noClasses = false
+      # codeFences = false
+      guessSyntax = true
+      # hl_Lines = ""
+      # lineNoStart = 1
+      # lineNos = false
+      # lineNumbersInTable = false
+      # tabWidth = 4
+      # noClasses = false
