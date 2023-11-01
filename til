@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# 
+# Helper script to make it easy to write a TIL and publish it immediately.
+# Stolen and adapted from: https://github.com/codeinthehole/til/blob/master/scripts/til_post.sh
+#
+# Usage:
+#
+#   $ ./til about Alfred's snippet collections
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+PROJECT_ROOT=$(dirname "$0")
+
+
+function abort() {
+    echo "$*"; exit 1;
+}
+
+
+function require() {
+    type "$1" >/dev/null 2>/dev/null
+}
+
+
+function main() {
+    # Check for required commands.
+    require git || abort "Git is not installed or not in the system's PATH"
+    require vim || abort "Vim is not installed or not in the system's PATH"
+    require slugify || abort "slugify is not installed or not in the system's PATH"
+
+    # Change to this directory.
+    cd "$PROJECT_ROOT"
+
+    # Ensure repo is clean and on appropriate branch.
+    if [[ ! -z $(git status --porcelain) ]]
+    then
+        echo "TIL repo has uncommitted changes. Commit these changes and try again" >&2
+        exit 1
+    fi
+    git checkout main 2> /dev/null
+
+    # Generate appropriate filepath
+    local description="$1"
+    filepath=$(generate_filepath "$description")
+
+    # Open file pre-populated with Hugo frontmatter
+    local title="$(tr '[:lower:]' '[:upper:]' <<< ${description:0:1})${description:1}"
+    echo Creating post with title "$title" at "$filepath"
+    date=$(date --iso-8601=seconds)
+    cat >"$filepath" <<- CONTENT
+---
+title: "$title"
+date: "$date"
+tags: []
+---
+
+CONTENT
+
+    # Open Vim insert mode with the cursor after the frontmatter.
+    vim -c ':normal }' -c 'startinsert' $filepath
+
+    # Generate static site.
+    publish "$filepath" "TIL $description"
+}
+
+function generate_filepath() {
+    echo content/posts/$(slugify "$1").md
+}
+
+function publish() {
+    local filepath="$1"
+    local title="$2"
+
+    # Commit the post file and any static assets that might have been added while writing this post.
+    git add $filepath static/
+    git commit -m "$title" > /dev/null 
+
+    echo Ready to publish!
+    echo
+    echo To preview, run: hugo server
+    echo
+    echo To publish, run: git push
+
+    # Publish the changes to Github.
+    # git push
+}
+
+if [[ $_ != $0 ]]
+then
+    if [ $# -eq 0 ]
+    then
+        echo "Please enter a TIL description" >&2
+        exit 1
+    else
+        main "$*"
+    fi
+fi
