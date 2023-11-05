@@ -74,7 +74,7 @@ function publish() {
     local title="$2"
 
     # Commit the post file and any static assets that might have been added while writing this post.
-    git add $filepath static/
+    git add $filepath assets/
     git commit -m "$title" > /dev/null 
 
     echo Ready to publish!
