@@ -2,12 +2,13 @@
 title: "How to call fluidsynth C API from Zig"
 date: "2023-11-05T17:02:37+01:00"
 tags:
-- zig
-- fluidsynth
-- C-library
-- midi
-- sound-synthesis
+  - zig
+  - fluidsynth
+  - C-library
+  - midi
+  - sound-synthesis
 ---
+
 I find quite cool how quickly you can start using a C library from
 [Zig](https://ziglang.org/)! No need to write bindings or to fiddle with a FFI,
 [it provides direct integration with C
@@ -70,7 +71,7 @@ pub fn main() void {
 When I first attempted to run it, I've got a segmentation fault:
 
 ```shell
-$ zig run zig_fluid_example.zig -lfluidsynth 
+$ zig run zig_fluid_example.zig -lfluidsynth
 Segmentation fault at address 0x0
 ???:?:?: 0x0 in ??? (???)
 Aborted (core dumped)
