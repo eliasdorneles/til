@@ -89,3 +89,61 @@ $ zig run zig_fluid_example.zig -lfluidsynth -lc
 ```
 
 I am quite content with the result and look forward to playing more with this combo!
+
+
+### Bonus:
+
+Here is another small Zig program connecting whatever MIDI input is available
+to the synthesizer.
+
+Running this program, when I play some notes in my MIDI controller (an AKAI MPK
+mini), I hear the notes played by Fluidsynth and see the MIDI events being
+printed on the program output.
+
+```zig
+const std = @import("std");
+const fluid = @cImport(@cInclude("fluidsynth.h"));
+
+fn handle_midi_event(data: ?*anyopaque, event: ?*fluid.fluid_midi_event_t) callconv(.C) c_int {
+    _ = fluid.fluid_synth_handle_midi_event(data, event);
+    const event_type: c_int = fluid.fluid_midi_event_get_type(event);
+    std.debug.print("received event -- type: {}\n", .{event_type});
+    // std.debug.print("received event\n", .{});
+    return fluid.FLUID_OK;
+}
+
+pub fn main() void {
+    const settings = fluid.new_fluid_settings();
+    defer fluid.delete_fluid_settings(settings);
+    const synth = fluid.new_fluid_synth(settings);
+    defer fluid.delete_fluid_synth(synth);
+
+    // here we load the soundfont file
+    var sfont_id = fluid.fluid_synth_sfload(synth, "soundfonts/GeneralUser_GS_v1.471.sf2", 1);
+    if (sfont_id == -1) {
+        std.debug.print("Oops, could not load the soundfont\n", .{});
+        return;
+    }
+
+    // here we create a synthesizer to play whatever events we send later
+    var audio_driver = fluid.new_fluid_audio_driver(settings, synth);
+    defer fluid.delete_fluid_audio_driver(audio_driver);
+
+    // here we create a midi driver to catch MIDI events
+    _ = fluid.fluid_settings_setint(settings, "midi.autoconnect", @as(c_int, 1));
+    // we can either plug our midi driver straight to the synthesizer
+    // var midi_driver = fluid.new_fluid_midi_driver(settings, fluid.fluid_synth_handle_midi_event, synth);
+
+    // or we plug our own callback function, where we can inspect the event
+    // after calling the synth's callback
+    var midi_driver = fluid.new_fluid_midi_driver(settings, handle_midi_event, synth);
+
+    defer fluid.delete_fluid_midi_driver(midi_driver);
+
+    // wait for some events, before stopping
+    std.debug.print("Waiting for some events...\n", .{});
+    std.time.sleep(std.time.ns_per_min * 1);
+
+    std.debug.print("Play time is over, stopping now\n", .{});
+}
+```
