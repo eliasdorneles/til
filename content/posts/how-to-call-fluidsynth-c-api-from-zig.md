@@ -1,7 +1,12 @@
 ---
 title: "How to call fluidsynth C API from Zig"
 date: "2023-11-05T17:02:37+01:00"
-tags: []
+tags:
+- zig
+- fluidsynth
+- C-library
+- midi
+- sound-synthesis
 ---
 I find quite cool how quickly you can start using a C library from
 [Zig](https://ziglang.org/)! No need to write bindings or to fiddle with a FFI,
