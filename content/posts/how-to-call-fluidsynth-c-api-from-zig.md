@@ -36,14 +36,17 @@ const fluid = @cImport(@cInclude("fluidsynth.h"));
 
 pub fn main() void {
     const settings = fluid.new_fluid_settings();
+    defer fluid.delete_fluid_settings(settings);
     const synth = fluid.new_fluid_synth(settings);
+    defer fluid.delete_fluid_synth(synth);
 
     // here we load the soundfont file
     _ = fluid.fluid_synth_sfload(synth, "soundfonts/GeneralUser_GS_v1.471.sf2", 1);
 
     // this triggers the synthesizer to play whatever events
     // we send later
-    _ = fluid.new_fluid_audio_driver(settings, synth);
+    var audio_driver = fluid.new_fluid_audio_driver(settings, synth);
+    defer fluid.delete_fluid_audio_driver(audio_driver);
 
     var key: i16 = 60;
     const note_length = std.time.ns_per_s / 4; // 1/4th of a second
