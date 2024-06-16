@@ -1,7 +1,11 @@
 ---
 title: "The basics of the FluidSynth Sequencer API"
 date: "2024-06-15T22:36:58+02:00"
-tags: []
+tags:
+  - zig
+  - fluidsynth
+  - C-library
+  - midi
 ---
 Today I learned the basics of the [FluidSynth Sequencer API](https://www.fluidsynth.org/api/Sequencer.html).
 It is not super complicated, but it took me some time to understand the
@@ -151,7 +155,7 @@ It was relatively straightforward, except a few gotchas:
   from Zig.
 * I didn't know which bank/preset number the "Standard Drum" was in, so I had
   to grab a tool to inspect the GM GeneralUser soundfont. I used the
-  [tynisoundfont](https://github.com/nwhitehead/tinysoundfont-pybind) tool,
+  [tinysoundfont](https://github.com/nwhitehead/tinysoundfont-pybind) tool,
   which you can use like `tinysoundfont --info $SOUNDFONT_FILE`, and it will
   describe the contents -- FYI, it was the first preset of bank `120`.
 * the Sequencer class provided by pyFluidSynth that wraps the Sequencer API is
