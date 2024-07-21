@@ -1,5 +1,5 @@
 ---
-title: "About Bitmap Heap Scan on Potgresql query plan"
+title: "About Bitmap Heap Scan on Postgresql query plan"
 date: "2024-06-11T19:31:32+02:00"
 tags: []
 ---
