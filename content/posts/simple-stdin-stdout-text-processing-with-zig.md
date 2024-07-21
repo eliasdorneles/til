@@ -256,6 +256,95 @@ refactor!
 
 For some next time! ;-)
 
+**Update:** here is the refactored version with ArrayList, shorter and simpler:
+
+```zig
+const std = @import("std");
+const mem = std.mem;
+
+const Command = struct {
+    allocator: mem.Allocator,
+    name: []const u8 = "",
+    args: [][]const u8 = &.{},
+
+    pub fn init(self: *Command, cmd_line: []u8) !void {
+        var it = mem.splitScalar(u8, cmd_line, ' ');
+        self.name = try self.allocator.dupe(u8, it.next() orelse "");
+
+        var temp = std.ArrayList([]const u8).init(self.allocator);
+        while (it.next()) |word| {
+            if (mem.eql(u8, word, "")) continue;
+
+            try temp.append(try self.allocator.dupe(u8, word));
+        }
+        self.args = try temp.toOwnedSlice();
+    }
+
+    pub fn deinit(self: *Command) void {
+        self.allocator.free(self.name);
+        for (self.args) |arg| {
+            self.allocator.free(arg);
+        }
+        self.allocator.free(self.args);
+    }
+
+    pub fn format(
+        self: Command,
+        comptime _: []const u8,
+        _: std.fmt.FormatOptions,
+        writer: anytype,
+    ) !void {
+        try writer.writeAll("Command {");
+        try writer.print(" name={s}, args=.{{", .{self.name});
+        for (self.args, 0..) |arg, i| {
+            if (mem.eql(u8, arg, "")) {
+                break;
+            } else {
+                if (i != 0) try writer.writeAll(", ");
+            }
+            try writer.print("\"{s}\"", .{arg});
+        }
+        try writer.writeAll("} }");
+    }
+};
+
+fn prompt(text: []const u8, line: *std.ArrayList(u8)) ![]u8 {
+    const stdout = std.io.getStdOut().writer();
+    try stdout.print("{s}", .{text});
+
+    const stdin = std.io.getStdIn().reader();
+    const line_writer = line.writer();
+    try stdin.streamUntilDelimiter(line_writer, '\n', null);
+    return line.items;
+}
+
+pub fn main() !void {
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
+
+    const stdout = std.io.getStdOut().writer();
+
+    var line = std.ArrayList(u8).init(allocator);
+    defer line.deinit();
+
+    while (prompt("repl % ", &line)) |cmd_line| {
+        defer line.clearRetainingCapacity();
+
+        var cmd = Command{ .allocator = allocator };
+        defer cmd.deinit();
+
+        try cmd.init(cmd_line);
+        try stdout.print("{s}\n", .{cmd});
+    } else |err| {
+        try switch (err) {
+            error.EndOfStream => stdout.print("Bye\n", .{}),
+            else => stdout.print("Error: {}\n", .{err}),
+        };
+    }
+}
+```
+
 
 ### Little gotcha: globals inside structs are globally shared
 
