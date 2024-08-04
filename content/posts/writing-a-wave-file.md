@@ -235,6 +235,8 @@ pub fn main() !void {
 }
 ```
 
+**UPDATE:** the above code contain bugs, which are fixed in [the code of the new post](/til/posts/generate-wave-file-in-zig-choosing-the-bit-depth/)
+
 In the glorious style of "everything in the main function"! :smile:
 
 Hey, at least it has comments! =P
