@@ -1,7 +1,12 @@
 ---
 title: "Debugging inside Neovim with nvim-dap and nvim-dap-ui"
 date: "2024-08-08T22:26:37+02:00"
-tags: []
+tags:
+  - vim
+  - neovim
+  - debug
+  - nvim-dap
+  - lua
 ---
 
 Today I took some time to configure my Neovim with a plugin that I had recently
