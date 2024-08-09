@@ -28,6 +28,10 @@ It also has a `gui` command that will display a user interface GUI-like, where
 you can still do `n` to go to the next line and `s` to step into, but it's more
 responsive because no need to hit `<Enter>` after each command.
 
+Here is what it looks like:
+
+{{< img src="debug-lldb.png" alt="Debugging a Zig program with LLDB - Screenshot" size-method="Full" size-format="600x400 webp" position="center" >}}
+
 Okay, so that works, can we do better?
 
 ### The nvim-dap way + codelldb
@@ -91,5 +95,9 @@ dap.configurations.zig = {
     },
 }
 ```
+
+Here is what looks like using it:
+
+{{< img src="debug_nvim_dap_codelldb.png" alt="Debugging a Zig program with Neovim DAP + adapters - Screenshot" size-method="Full" size-format="600x400 webp" position="center" >}}
 
 [Full config available here](https://github.com/eliasdorneles/dotfiles/blob/31b6a1c5f2c84ea8a4bd6842f29e79e963d4268e/config/nvim/lua/settings.lua).
