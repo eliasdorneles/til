@@ -98,7 +98,7 @@ function publish() {
 
 if [[ $_ != $0 ]]
 then
-    if [ $# -eq 0 ]
+    if [ $# -eq 0 ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]
     then
         print_usage
         exit 1

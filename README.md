@@ -21,3 +21,9 @@ You're ready to go!
 To test locally:
 
     hugo serve
+
+### To write posts
+
+To run `./til`, you want to install slugify:
+
+    pip install python-slugify
