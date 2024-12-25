@@ -5,25 +5,26 @@ tags: []
 ---
 In my Zig learning journey, for some problems I have found the standard library
 documentation a bit too curt.
-Some common problems are documented in other non-official sources.
+Some solutions to common problems are documented in other non-official sources.
 
 One such source is the [Zig Cookbook](https://cookbook.ziglang.cc/) website,
 which is pretty great for that.
 
-Wanna know how to generate random numbers? [There is an example for that.](https://cookbook.ziglang.cc/06-01-rand.html)
+Wanna know how to generate random numbers? [There is a short example code for that.](https://cookbook.ziglang.cc/06-01-rand.html)
 
-Wanna know how to make a request with Zig's stdlib functions? [You got it!](https://cookbook.ziglang.cc/05-01-http-get.html).
+Wanna know how to make an HTTP request with Zig's stdlib functions? [You got it!](https://cookbook.ziglang.cc/05-01-http-get.html).
 
-So I was a bit surprised that for argument parsing, the example there doesn't
-use the standard library and points to three different libraries that you can
-use.
+So I was a bit surprised that [the example for argument
+parsing](https://cookbook.ziglang.cc/13-01-argparse.html) doesn't use the
+standard library, instead it lists three different libraries and showcase one
+of them.
 
 I suppose if you want to build a big project, with subcommands and whatnot,
 using a library is justified, but I don't like adding new dependencies unless I
 have a really big reason for it.
 
 So I decided to write some simple code that would cover my needs for simple
-scripts. I intend to use this as a "CLI template" for small programs.
+scripts.
 
 Without further ado, here is the code:
 
@@ -139,12 +140,13 @@ pub fn main() !u8 {
 }
 ```
 
-This may not be the best looking argument parsing code, nor the most ergonomic
-CLI tool, but it's simple. No extra dependencies, all fits in one file. I like
-that.
+This may not be the best-looking code, nor the most ergonomic CLI tool, but
+it's simple. No extra dependencies, all fits in one file and it is reasonably
+structured. Simplicity, I like that.
 
 In comparison to a library, I suppose the biggest disadvantage is that you have
-to keep the usage help text and the parsing code in sync manually. However, for
-small programs, that's not hard to do.
+to keep the hardcoded usage help text and the actual parsing code in sync
+manually. However, for small programs, that's not hard to do.
 
-So I am pretty satisfied with this.
+So I am pretty satisfied with this, and I intend to use it as a "CLI template"
+for small programs.
