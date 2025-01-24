@@ -1,7 +1,10 @@
 ---
 title: "Parsing command-line args in Zig using only stdlib"
 date: "2024-12-24T18:54:07+01:00"
-tags: []
+tags:
+- Zig
+- CLI
+- argument parsing
 ---
 In my Zig learning journey, for some problems I have found the standard library
 documentation a bit too curt.
