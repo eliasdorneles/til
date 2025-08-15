@@ -7,7 +7,7 @@ enableRobotsTXT = true
 
 # List Config
 summaryLength= 15
-paginate = 5
+
 
 # See: https://gohugo.io/getting-started/configuration-markup/#highlight
 [markup.highlight]
