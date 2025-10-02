@@ -11,7 +11,7 @@ Install [Hugo](https://gohugo.io/installation/).
 
 After cloning the repository, fetch the theme:
 
-    git submodules update --init --recursive
+    git submodule update --init --recursive
 
 Install the JS dependencies:
 
