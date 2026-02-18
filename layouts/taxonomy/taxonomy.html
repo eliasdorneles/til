@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h1 class="archive-title">Tags</h1>
+{{ if .Content }}<p>{{ .Content }}</p>{{ end }}
+<div class="tag-cloud">
+  {{ range .Pages.ByTitle }}
+  <a class="tag-pill" href="{{ .Permalink }}">{{ .Title }}<span class="tag-count"> ({{ len .Pages }})</span></a>
+  {{ end }}
+</div>
+{{ end }}

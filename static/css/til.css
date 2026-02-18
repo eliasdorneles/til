@@ -444,6 +444,45 @@ img.align-right { float: right; margin: 1em 0 1em 1em; }
   margin-top: 2em;
 }
 
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1.5em;
+}
+
+.tag-pill {
+  display: inline-block;
+  background-color: #eef2f5;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.25em 0.75em;
+  font-size: 0.88em;
+  color: var(--blue-dark);
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.tag-pill:hover,
+.tag-pill:visited:hover {
+  background-color: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.tag-pill:visited {
+  color: var(--blue-dark);
+}
+
+.tag-count {
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.tag-pill:hover .tag-count {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* ========================
    MISC
    ======================== */
