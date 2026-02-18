@@ -203,6 +203,23 @@ nav ul li {
 }
 
 /* ========================
+   PARENT SITE BREADCRUMB
+   ======================== */
+
+#banner .parent-site {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+#banner .parent-site a {
+  color: inherit;
+  text-decoration: none;
+}
+#banner .parent-site a:hover {
+  text-decoration: underline;
+}
+
+/* ========================
    HEADINGS
    ======================== */
 

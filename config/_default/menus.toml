@@ -1,20 +1,14 @@
 [[main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
-
-[[main]]
     identifier = "posts"
     name = "Posts"
-    url = "/posts"
-    weight = 2
+    url = "/"
+    weight = 1
 
 [[main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags"
-    weight = 3
+    weight = 2
 
 
 # Social Media Configuration
