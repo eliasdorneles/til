@@ -1,0 +1,450 @@
+/* ========================
+   SELF-HOSTED FONTS
+   ======================== */
+
+/* Covered By Your Grace — display/header */
+@font-face {
+  font-family: 'Covered By Your Grace';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/covered-by-your-grace-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Covered By Your Grace';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/covered-by-your-grace-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Libre Baskerville — body text */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-700-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-400-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/libre-baskerville-400-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* IBM Plex Mono — code */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/ibm-plex-mono-500.woff2') format('woff2');
+}
+
+/* ========================
+   CSS CUSTOM PROPERTIES
+   ======================== */
+
+:root {
+  --teal:        #52B69A;
+  --teal-dark:   #34A0A4;
+  --blue:        #1A759F;
+  --blue-dark:   #1E6091;
+  --blue-navy:   #184e77;
+  --text:        #222;
+  --text-muted:  #666;
+  --bg:          #fefefe;
+  --border:      #dde0e4;
+  --code-bg:     #282c34;
+  --code-text:   #abb2bf;
+  --font-body:   'Libre Baskerville', Georgia, serif;
+  --font-display:'Covered By Your Grace', cursive;
+  --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ========================
+   RESPONSIVE LAYOUT
+   ======================== */
+
+@media all and (min-width: 1024px) {
+  body { max-width: 960px; width: 90%; margin: 0 auto; }
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  body { max-width: 720px; width: 90%; margin: 0 auto; }
+}
+@media all and (min-width: 480px) and (max-width: 767px) {
+  body { max-width: 450px; width: 90%; margin: 0 auto; }
+}
+@media all and (max-width: 479px) {
+  body { max-width: 100%; width: 95%; margin: 0 auto; }
+}
+
+/* ========================
+   BASE
+   ======================== */
+
+body {
+  font: 18px/1.75 var(--font-body);
+  color: var(--text);
+  background-color: var(--blue-dark);
+}
+
+/* ========================
+   SITE CONTAINER
+   ======================== */
+
+.site-container {
+  background-color: var(--bg);
+  padding: 0 1.2em 1.2em;
+  border: 8px solid var(--teal);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* ========================
+   HEADER / BANNER
+   ======================== */
+
+#banner {
+  background-color: var(--teal);
+  padding: 1.1em 1.4em 0.7em;
+  margin: 0 -1.2em 2em;
+}
+
+#banner h1 {
+  margin: 0 0 0.05em;
+  font-family: var(--font-display);
+  font-size: 3em;
+  line-height: 1.1;
+}
+
+#banner h1 a,
+#banner h1 > a:visited,
+#banner h1 a:hover {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 1.4em;
+}
+
+#banner nav ul li a,
+#banner nav ul li a:visited {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 0.9em;
+  letter-spacing: 0.03em;
+}
+
+#banner nav ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ========================
+   HEADINGS
+   ======================== */
+
+h1, h2, h3, h4 {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.7em;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+  line-height: 1.25;
+}
+
+header:first-child h1 {
+  margin-top: 0.8em;
+}
+
+h2 {
+  font-size: 1.3em;
+  margin: 0;
+  margin-top: 1.8em;
+}
+
+h3 {
+  font-size: 1.05em;
+  margin: 0;
+  margin-top: 1.6em;
+  color: var(--text-muted);
+}
+
+h4 {
+  font-size: 0.9em;
+  margin: 0;
+  margin-top: 1.4em;
+  color: var(--text-muted);
+}
+
+h1.archive-title {
+  color: #444;
+  font-size: 1.8em;
+}
+
+/* ========================
+   LINKS
+   ======================== */
+
+a, a:visited {
+  color: var(--blue);
+}
+
+a:hover {
+  color: var(--blue-navy);
+}
+
+/* ========================
+   POST LIST (homepage)
+   ======================== */
+
+.posttitle h1 {
+  font-size: 1.55em;
+  margin-top: 2.5em;
+  margin-bottom: 0.15em;
+}
+
+#content .posttitle:first-child h1 {
+  margin-top: 0.2em;
+}
+
+.posttitle small.published {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  color: var(--teal-dark);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.7em;
+}
+
+ul.posts-list li {
+  list-style-type: none;
+}
+
+/* ========================
+   ARTICLE PAGE
+   ======================== */
+
+.entry-title {
+  font-size: 1.9em;
+  line-height: 1.2;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.entry-title a,
+.entry-title a:visited {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.entry-title a:hover {
+  color: var(--blue);
+}
+
+/* Post metadata */
+.post-info {
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin: 0.3em 0 2.2em;
+  font-style: normal;
+}
+
+.post-info a,
+.post-info a:visited {
+  color: var(--teal-dark);
+}
+
+address {
+  font-style: normal;
+}
+
+/* ========================
+   CODE
+   ======================== */
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+}
+
+/* Inline code */
+code {
+  background-color: #f0f2f5;
+  color: #b04040;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.84em;
+}
+
+/* Code blocks */
+.highlight pre,
+pre {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  border: none;
+  border-radius: 6px;
+  padding: 1.1em 1.3em;
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.6;
+  margin: 1.4em 0;
+}
+
+/* Reset inline code styles inside code blocks */
+pre code,
+pre code.hljs {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: 0.82em;
+  border-radius: 0;
+}
+
+/* ========================
+   BLOCKQUOTES
+   ======================== */
+
+blockquote {
+  background: #f7f8f9;
+  border-left: 4px solid var(--teal);
+  margin: 1.5em 0;
+  padding: 0.8em 1.3em;
+  color: #3a3a3a;
+  font-style: italic;
+}
+
+blockquote:before {
+  content: none;
+}
+
+blockquote p {
+  display: block;
+  margin: 0;
+}
+
+/* ========================
+   IMAGES
+   ======================== */
+
+img, div.figure {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px;
+  margin: 1em 1em 1em 0;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+img.align-left  { float: left; }
+img.align-right { float: right; margin: 1em 0 1em 1em; }
+
+.align-center {
+  display: block;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* ========================
+   TAGS
+   ======================== */
+
+.taglist {
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 2em;
+}
+
+/* ========================
+   MISC
+   ======================== */
+
+hr {
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.footer-menu {
+  padding: 0.8em 0;
+  font-size: 0.82em;
+  color: var(--text-muted);
+}
+
+.footer-menu a,
+.footer-menu a:visited {
+  color: var(--text-muted);
+}

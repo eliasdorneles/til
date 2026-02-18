@@ -1,6 +1,8 @@
 {{ define "main" }}
-{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ $pages := .Pages }}
 {{ $paginator := .Paginate $pages }}
+<h1 class="archive-title">{{ if .Params.header }}{{ .Params.header }}{{ else }}{{ .Title }}{{ end }}</h1>
+{{ if .Content }}<p>{{ .Content }}</p>{{ end }}
 {{ range $paginator.Pages }}
   {{ partial "list/default" . }}
 {{ end }}

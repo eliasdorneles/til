@@ -1,0 +1,10 @@
+<article>
+  <h1 class="entry-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+  <address class="post-info">
+    <time>{{ dateFormat "02 Jan 2006" .Date }}</time>
+    {{ with .Params.tags }}
+    · Tags: {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}
+    {{ end }}
+  </address>
+  <section>{{ .Content | emojify }}</section>
+</article>
