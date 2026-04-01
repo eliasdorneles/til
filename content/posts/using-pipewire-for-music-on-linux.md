@@ -10,6 +10,38 @@ tags:
   - PipeWire
 ---
 
+**Note:** If you've just installed Reaper on Ubuntu and you're seeing an error about opening the Audio device, it's probably because your system isn't configured to use PipeWire replacing JACK libs.
+
+To confirm that this is your problem, run `ldconfig -p | grep libjack | grep pipewire` -- if you don't see any results, this is the problem!
+
+To fix this, you want to:
+
+1) First, install pipewire-jack, if you haven't already: 
+
+```
+sudo apt install pipewire-jack
+```
+
+2. Make Pipewire the owner of `libjack`, by placing the proper configuration file from the example provided in the library loader path:
+
+```
+sudo cp /usr/share/doc/pipewire/examples/ld.so.conf.d/pipewire-jack-x86_64-linux-gnu.conf \
+    /etc/ld.so.conf.d/
+```
+
+3. Run ldconfig to update the necessary library links
+
+```
+sudo ldconfig
+```
+
+After you do the above steps, when you run `ldconfig -p | grep libjack | grep
+pipewire` you should see some results, indicating that pipewire is indeed
+answering for JACK libraries, and Reaper should now have no problem opening the
+audio device.
+
+----
+
 That's it, I've made the switch to [PipeWire](https://pipewire.org/)!
 
 And things are looking great!
