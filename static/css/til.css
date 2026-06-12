@@ -98,20 +98,62 @@
    ======================== */
 
 :root {
-  --teal:        #52B69A;
-  --teal-dark:   #34A0A4;
-  --blue:        #1A759F;
-  --blue-dark:   #1E6091;
-  --blue-navy:   #184e77;
-  --text:        #222;
-  --text-muted:  #666;
-  --bg:          #fefefe;
-  --border:      #dde0e4;
+  color-scheme: light dark;
+
+  /* accents */
+  --teal:        light-dark(#52B69A, #41977f);
+  --teal-dark:   light-dark(#34A0A4, #5cc0b4);
+  --blue:        light-dark(#1A759F, #6fb9d9);
+  --blue-dark:   light-dark(#1E6091, #9ed2ea);
+  --blue-navy:   light-dark(#184e77, #a5d6ec);
+
+  /* surfaces */
+  --backdrop:    light-dark(#1E6091, #0a131b);
+  --bg:          light-dark(#fefefe, #16212b);
+  --banner-bg:   light-dark(#52B69A, #1d4a40);
+  --border:      light-dark(#dde0e4, #2d3b46);
+  --shadow:      light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+
+  /* text */
+  --text:        light-dark(#222, #d6d3c9);
+  --text-muted:  light-dark(#666, #92a2a0);
+
+  /* code (blocks stay dark in both themes) */
   --code-bg:     #282c34;
   --code-text:   #abb2bf;
+  --inline-code-bg:   light-dark(#f0f2f5, #242f3a);
+  --inline-code-text: light-dark(#b04040, #e0938b);
+
+  /* blockquotes */
+  --quote-bg:    light-dark(#f7f8f9, #1b2832);
+  --quote-text:  light-dark(#3a3a3a, #c7c4bb);
+
+  /* non-color knobs, overridden in the dark blocks below */
+  --img-dim:     none;
+  --show-sun:    none;
+  --show-moon:   inline;
+
   --font-body:   'Libre Baskerville', Georgia, serif;
   --font-display:'Covered By Your Grace', cursive;
   --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* Manual override via the banner toggle (persisted in localStorage) */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+
+/* light-dark() only covers colors; these mirror the dark scheme for the rest */
+:root[data-theme="dark"] {
+  --img-dim: brightness(0.88) contrast(1.04);
+  --show-sun: inline;
+  --show-moon: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --img-dim: brightness(0.88) contrast(1.04);
+    --show-sun: inline;
+    --show-moon: none;
+  }
 }
 
 /* ========================
@@ -138,7 +180,8 @@
 body {
   font: 18px/1.75 var(--font-body);
   color: var(--text);
-  background-color: var(--blue-dark);
+  background-color: var(--backdrop);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ========================
@@ -151,6 +194,7 @@ body {
   border: 8px solid var(--teal);
   border-top: 0;
   border-bottom: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ========================
@@ -158,9 +202,11 @@ body {
    ======================== */
 
 #banner {
-  background-color: var(--teal);
+  position: relative;
+  background-color: var(--banner-bg);
   padding: 1.1em 1.4em 0.7em;
   margin: 0 -1.2em 2em;
+  transition: background-color 0.3s ease;
 }
 
 #banner h1 {
@@ -175,8 +221,40 @@ body {
 #banner h1 a:hover {
   color: #fff;
   text-decoration: none;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+  text-shadow: 2px 2px 0 light-dark(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.35));
 }
+
+/* ========================
+   THEME TOGGLE
+   ======================== */
+
+.theme-toggle {
+  position: absolute;
+  /* above .parent-site, whose opacity makes it paint over the button */
+  z-index: 1;
+  top: 1.2em;
+  right: 1.3em;
+  background: none;
+  border: none;
+  padding: 0.35em;
+  line-height: 0;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease, transform 0.4s ease;
+}
+
+.theme-toggle:hover {
+  color: #fff;
+  transform: rotate(40deg);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.theme-toggle .icon-sun  { display: var(--show-sun); }
+.theme-toggle .icon-moon { display: var(--show-moon); }
 
 nav ul {
   list-style-type: none;
@@ -259,7 +337,7 @@ h4 {
 }
 
 h1.archive-title {
-  color: #444;
+  color: light-dark(#444, #c3c7c3);
   font-size: 1.8em;
 }
 
@@ -352,8 +430,8 @@ code, pre, kbd {
 
 /* Inline code */
 code {
-  background-color: #f0f2f5;
-  color: #b04040;
+  background-color: var(--inline-code-bg);
+  color: var(--inline-code-text);
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 0.84em;
@@ -390,11 +468,11 @@ pre code.hljs {
    ======================== */
 
 blockquote {
-  background: #f7f8f9;
+  background: var(--quote-bg);
   border-left: 4px solid var(--teal);
   margin: 1.5em 0;
   padding: 0.8em 1.3em;
-  color: #3a3a3a;
+  color: var(--quote-text);
   font-style: italic;
 }
 
@@ -421,7 +499,17 @@ img {
   border-radius: 4px;
   padding: 4px;
   margin: 1em 1em 1em 0;
-  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 3px 10px var(--shadow);
+  /* white backing keeps transparent images (diagrams) legible in dark mode;
+     content-box clipping hides it behind the padding in both themes */
+  background-color: #fff;
+  background-clip: content-box;
+  filter: var(--img-dim);
+  transition: filter 0.25s ease;
+}
+
+img:hover {
+  filter: none;
 }
 
 img.align-left  { float: left; }
@@ -453,7 +541,7 @@ img.align-right { float: right; margin: 1em 0 1em 1em; }
 
 .tag-pill {
   display: inline-block;
-  background-color: #eef2f5;
+  background-color: light-dark(#eef2f5, #233039);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 0.25em 0.75em;

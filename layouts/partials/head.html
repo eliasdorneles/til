@@ -1,3 +1,15 @@
 {{- partial "head/meta.html" . -}}
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#52B69A">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d4a40">
+<script>
+// apply saved theme before first paint to avoid a flash of the wrong theme
+(function () {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
 {{- partial "head/styles.html" . -}}
+<script defer src="{{ "js/theme.js" | relURL }}"></script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="4f3dd4ee-0791-4d9c-b94f-6d1aa073e79a"></script>
