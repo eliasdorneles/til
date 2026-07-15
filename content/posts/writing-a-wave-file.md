@@ -86,7 +86,7 @@ These were interesting and good to have as reference, but I wanted to do
 something on my own, to really solidify the learning.
 
 I landed into [this great article explaining the WAVE
-format](http://soundfile.sapp.org/doc/WaveFormat/), and spent some time poking
+format](https://ccrma.stanford.edu/courses/422-winter-2014/projects/WaveFormat/), and spent some time poking
 around the wave files generated with Python with the script above in an
 hexadecimal editor, to check my understanding.
 
